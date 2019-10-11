@@ -28,11 +28,11 @@ public class CantCatchDirectly implements Runnable{
     @Override
     public void run() {
         //解决方法 1.在run方法里面放try/catch (不推荐)
-        try {
+//        try {
             throw new RuntimeException();
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        }
+//        } catch (RuntimeException e) {
+//            System.out.println("Caught Exception...");
+//        }
         //方法 2.调用UncaughtExceptionHandler（自己实现）
     }
 }
