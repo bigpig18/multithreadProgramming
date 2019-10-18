@@ -8,13 +8,13 @@ package singleton;
  * @author li
  * @date 2019/10/18
  */
-public class SingletonHungry {
+public class SingletonHungry1 {
 
-    private final static SingletonHungry INSTANCE = new SingletonHungry();
+    private final static SingletonHungry1 INSTANCE = new SingletonHungry1();
 
-    private SingletonHungry(){};
+    private SingletonHungry1(){};
 
-    public SingletonHungry getInstance(){
+    public SingletonHungry1 getInstance(){
         return INSTANCE;
     }
 }
