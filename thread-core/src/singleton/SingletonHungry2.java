@@ -14,7 +14,7 @@ public class SingletonHungry2 {
 
     private SingletonHungry2(){}
 
-    public SingletonHungry2 getInstance(){
+    public static SingletonHungry2 getInstance(){
         return INSTANCE;
     }
 }
