@@ -12,7 +12,7 @@ public class SingletonHungry2 {
         INSTANCE = new SingletonHungry2();
     }
 
-    private SingletonHungry2(){};
+    private SingletonHungry2(){}
 
     public SingletonHungry2 getInstance(){
         return INSTANCE;
