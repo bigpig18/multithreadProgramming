@@ -12,7 +12,7 @@ public class SingletonHungry1 {
 
     private final static SingletonHungry1 INSTANCE = new SingletonHungry1();
 
-    private SingletonHungry1(){};
+    private SingletonHungry1(){}
 
     public static SingletonHungry1 getInstance(){
         return INSTANCE;
