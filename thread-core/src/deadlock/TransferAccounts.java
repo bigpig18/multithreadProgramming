@@ -44,7 +44,7 @@ public class TransferAccounts implements Runnable{
      * @param to 钱往哪去
      * @param amount 转账金额
      */
-    private void transferMoney(Account from, Account to, int amount) {
+    static void transferMoney(Account from, Account to, int amount) {
         synchronized (from){
 //            这里就是注释了
 //            try {
