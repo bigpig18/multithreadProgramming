@@ -49,6 +49,35 @@ public class TransferAccounts implements Runnable{
      * @param amount 转账金额
      */
     static void transferMoney(Account from, Account to, int amount) {
+//        class Helper{
+//            public void transfer(){
+//                if (from.balance - amount < 0){
+//                    System.out.println("余额不足，转账失败");
+//                }
+//                from.balance -= amount;
+//                to.balance += amount;
+//                System.out.println("转账成功: " + amount +"元");
+//            }
+//        }
+//        //这里用换序的思路来避免死锁(避免相反的获取锁的顺序)
+//        //
+//        int fromHash = System.identityHashCode(from);
+//        int toHash = System.identityHashCode(to);
+//        if (fromHash < toHash){
+//            synchronized (from){
+//                synchronized (to){
+//                    new Helper().transfer();
+//                }
+//            }
+//        }
+//
+//        if (fromHash > toHash){
+//            synchronized (to){
+//                synchronized (from){
+//                    new Helper().transfer();
+//                }
+//            }
+//        }
         synchronized (from){
 //            这里就是注释了
 //            try {
