@@ -16,6 +16,7 @@ public class TransferAccounts implements Runnable{
 
     private static Account a = new Account(500);
     private static Account b = new Account(500);
+    private static final Object LOCK = new Object();
 
     public static void main(String[] args) throws InterruptedException {
         TransferAccounts r1 = new TransferAccounts();
@@ -60,7 +61,6 @@ public class TransferAccounts implements Runnable{
 //            }
 //        }
 //        //这里用换序的思路来避免死锁(避免相反的获取锁的顺序)
-//        //
 //        int fromHash = System.identityHashCode(from);
 //        int toHash = System.identityHashCode(to);
 //        if (fromHash < toHash){
@@ -69,12 +69,20 @@ public class TransferAccounts implements Runnable{
 //                    new Helper().transfer();
 //                }
 //            }
-//        }
-//
-//        if (fromHash > toHash){
+//        }else if (fromHash > toHash){
 //            synchronized (to){
 //                synchronized (from){
 //                    new Helper().transfer();
+//                }
+//            }
+//        }else{
+//            //如果发生hash碰撞 即两个对象的hash值一样
+//            //就去竞争另外一把锁，谁拿到谁先转账
+//            synchronized (LOCK){
+//                synchronized (to){
+//                    synchronized (from){
+//                        new Helper().transfer();
+//                    }
 //                }
 //            }
 //        }
