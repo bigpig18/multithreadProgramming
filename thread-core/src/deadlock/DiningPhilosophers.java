@@ -20,7 +20,14 @@ public class DiningPhilosophers {
             Object leftChopstick = chopsticks[i];
             //防止下标越界
             Object rightChopstick = chopsticks[(i+1) % len];
-            philosophers[i] = new Philosophers(leftChopstick,rightChopstick);
+
+            //改变哲学家拿筷子的顺序(避免死锁)
+            if (i == len -1){
+                philosophers[i] = new Philosophers(rightChopstick,leftChopstick);
+            }else {
+                philosophers[i] = new Philosophers(leftChopstick,rightChopstick);
+            }
+
             new Thread(philosophers[i],"哲学家"+ (i + 1)).start();
         }
     }
