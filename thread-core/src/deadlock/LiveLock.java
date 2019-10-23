@@ -1,5 +1,7 @@
 package deadlock;
 
+import java.util.Random;
+
 /**
  * 描述: 演示活锁问题
  *
@@ -33,7 +35,7 @@ public class LiveLock {
         }
 
         public synchronized void use(){
-            System.out.printf("%s has eaten.",owner.name);
+            System.out.printf("%s has eaten.\n",owner.name);
         }
     }
 
@@ -57,8 +59,12 @@ public class LiveLock {
                     }
                     continue;
                 }
+
+                //当无条件给对方勺子的时候，会导致活锁问题
+                //现在引入随机值，并非无条件的把勺子给对方
+                Random random = new Random();
                 //有勺子，但是对方饿了，先让对方吃，并把勺子给对方
-                if (spouse.isHungry){
+                if (spouse.isHungry && random.nextInt(10) < 9){
                     System.out.println(name + ": " + spouse.name + "你先吃..");
                     spoon.setOwner(spouse);
                     continue;
